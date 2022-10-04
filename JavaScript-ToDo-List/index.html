@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
+     <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>To do List</title>
+</head>
+<body>
+   <div class="container">
+    <header class="container-header">
+        <h2>Lista de Tareas</h2>
+    </header>
+    <form id="form-create" class="form">
+        <input type="text" id="create" class="form-control" placeholder="Nombre de la tarea">
+        <button>
+            <i class="fa-solid fa-circle-plus"></i>
+        </button>
+    </form>
+   </div> 
+
+   <section>
+    <form>
+    <input type="text" placeholder="Buscar..." id="search">
+    </form> 
+    <ul id="ToDo-List" class="list-group">
+        <li>
+            <strong>Leer 30 minutos</strong>
+            <i class="fa-solid fa-delete-left borrar "></i>
+        </li>
+        <li>
+            <strong>Comer algo</strong>
+            <i class="fa-solid fa-delete-left borrar"></i>
+        </li>
+        <li>
+            <strong>Hacerse la cama</strong>
+            <i class="fa-solid fa-delete-left borrar"></i>
+        </li>
+    </ul>
+   </section>
+   <script src="/app.js"></script>
+</body>
+</html>
