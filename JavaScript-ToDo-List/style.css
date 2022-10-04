@@ -23,8 +23,13 @@ body {
   padding: 5px 5px;
 }
 
+.container-header img{
+  margin-top: 12px;
+}
+
 h2{
     font-size: 1.4rem;
+    margin-top: 6px;
 }
 
 .form {
@@ -54,6 +59,7 @@ button {
   border: none;
   background-color: rgba(97, 0, 0, 0.647);
   color: aliceblue;
+  cursor: pointer;
 }
 
 button i{
