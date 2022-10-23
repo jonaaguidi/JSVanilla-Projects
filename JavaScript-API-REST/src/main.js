@@ -66,6 +66,7 @@ async function getCategoriesPreview() {
     const categories = data.genres;
 
     createCategories(categories, categoriesPreviewList);
+    
 };
 
 
@@ -117,7 +118,7 @@ async function getMovieByID(id) {
 };
 
 
-async function getRelatedMoviesById(id){
+async function getRelatedMoviesById(id) {
     const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}`);
     const data = await res.json();
     const relatedMovies = data.results;
