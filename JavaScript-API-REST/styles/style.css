@@ -27,8 +27,6 @@
 
 html {
   background-color: var(--yellow);
-  max-width: 1300px;
-  margin: 0 auto;
 }
 
 body {
@@ -39,6 +37,7 @@ body {
   font-size: 16px;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -128,6 +127,7 @@ button {
 }
 
 .movie-img {
+  min-height: 180px;
   border-radius: 8px;
 }
 
@@ -419,5 +419,13 @@ footer a{
   }
   50% {
     opacity: 0%;
+  }
+}
+
+/* MediaQueries */
+
+@media screen and (max-width: 365px) {
+  input{
+    font-size: 14px;
   }
 }
