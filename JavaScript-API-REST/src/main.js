@@ -9,31 +9,77 @@ const lazyLoader = new IntersectionObserver((entries, observer) => {
             const url = entry.target.getAttribute("data-img");
             entry.target.setAttribute("src", url);
             observer.unobserve(entry.target);
-            
+
         };
     });
 });
 
-function createMovies(movies, container, lazyLoad = false) {
+// Informacion del localstorage
+function likedMoviesList() {
+    const item = JSON.parse(localStorage.getItem("liked_movies"));
+    let movies;
 
+    if (item) {
+        movies = item;
+    } else {
+        movies = {};
+    };
+
+    return movies;
+}
+
+function likemovie(movie) {
+    //movie.id
+    const likedMovies = likedMoviesList();
+    if (likedMovies[movie.id]) {
+        likedMovies[movie.id] = undefined;
+    } else {
+        likedMovies[movie.id] = movie;
+    };
+
+    localStorage.setItem("liked_movies", JSON.stringify(likedMovies));
+};
+
+function createMovies(movies, container, { lazyLoad = false, clean = false }) {
+
+    // Condicional / Parametro - Para limpiar los elementos cada vez que carguemos la pagina, ayuda a poder sumas elementos sin perder los ya cargados.
     // Poniendo un "String vacio" en el elemento que duplica, antes de renderizar los elementos de la api, hace que evitemos la doble carga de info. 
-    container.innerHTML = "";
+    if (clean) {
+        container.innerHTML = "";
+    };
 
     movies.forEach(movie => {
 
         const movieContainer = document.createElement("div");
         movieContainer.classList.add("movie-container");
         // Cada vez que hago click, cambia el hash a la descripcion de la pelicula.
-        movieContainer.addEventListener("click", () => location.hash = `#movie=${movie.id}`);
+
 
         const movieImg = document.createElement("img");
         movieImg.classList.add("movie-img");
         movieImg.setAttribute("alt", movie.title);
         // Si lazyload es verdad agrega "data-img" sino "src"
-        movieImg.setAttribute( lazyLoad ? "data-img" : `src` 
-        , `https://image.tmdb.org/t/p/w300${movie.poster_path}`);
+        movieImg.setAttribute(
+            lazyLoad ? "data-img" : `src`
+            , `https://image.tmdb.org/t/p/w300${movie.poster_path}`);
+
+        // Cada vez que hago click, cambia el hash a la descripcion de la pelicula.
+        movieImg.addEventListener("click", () => location.hash = `#movie=${movie.id}`);
+
+        const movieBtn = document.createElement("button");
+        movieBtn.classList.add(`movie-btn`);
+        likedMoviesList()[movie.id] && movieBtn.classList.add(`movie-btn--liked`);
+        movieBtn.addEventListener("click", () => {
+            //Agregar peliculas a localstorage
+            movieBtn.classList.toggle(`movie-btn--liked`);
+            likemovie(movie);
+            getLikedMovies();
+        });
+
+
         movieContainer.appendChild(movieImg);
         container.appendChild(movieContainer);
+        movieContainer.appendChild(movieBtn);
 
         // Condicional + Ejecuto la funcion lazyLoader que es un intersection observer para que observe cada una de las imagenes.
         if (lazyLoad) {
@@ -81,7 +127,7 @@ async function getTrendingMoviesPreview() {
     const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`);
     const data = await res.json();
     const movies = data.results;
-    createMovies(movies, trendingMoviesPreviewList, true);
+    createMovies(movies, trendingMoviesPreviewList, { lazyLoad: true, clean: true });
 };
 
 
@@ -101,7 +147,7 @@ async function getMoviesByCategory(categoryID) {
     const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${categoryID}`);
     const data = await res.json();
     const movies = data.results;
-    createMovies(movies, genericSection, true);
+    createMovies(movies, genericSection, { lazyLoad: true, clean: true });
 };
 
 
@@ -110,7 +156,7 @@ async function getMoviesBySearch(query) {
     const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`);
     const data = await res.json();
     const movies = data.results;
-    createMovies(movies, genericSection, true);
+    createMovies(movies, genericSection, { lazyLoad: true, clean: true });
 };
 
 
@@ -120,7 +166,7 @@ async function getTrendingMovies() {
     const data = await res.json();
     const movies = data.results;
 
-    createMovies(movies, genericSection);
+    createMovies(movies, genericSection, { lazyLoad: true, clean: true });
 
     const btnLoadMore = document.createElement("button");
     btnLoadMore.style.padding = "10px";
@@ -134,15 +180,31 @@ async function getTrendingMovies() {
 
 };
 
+
+// Variable que iterara +1 cada vez que hagan click al boton de "cargas mas peliculas"
+let page = 1;
+
+
 // Funcion asincrona que trae con fetch() MÁS "Peliculas en tendencia paginadas".
-async function getPaginatedTrendingMovies(){
-const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&page=2`);
-const data = await res.json();
-const movies = data.results;
+async function getPaginatedTrendingMovies() {
+    page++;
+    const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&page=${page}`);
+    const data = await res.json();
+    const movies = data.results;
 
-createMovies(movies, genericSection);
+    createMovies(movies, genericSection, { lazyLoad: true, clean: false });
 
-}
+    const btnLoadMore = document.createElement("button");
+    btnLoadMore.style.padding = "10px";
+    btnLoadMore.style.borderRadius = "3px";
+    btnLoadMore.style.margin = "0 auto";
+    btnLoadMore.style.marginTop = "12px";
+    btnLoadMore.innerText = "Cargar Más Peliculas";
+    genericSection.appendChild(btnLoadMore);
+
+    btnLoadMore.addEventListener("click", getPaginatedTrendingMovies);
+};
+
 
 
 // Funcion asincrona que trae con fetch() a la "Descripcion de las peliculas"
@@ -170,5 +232,11 @@ async function getRelatedMoviesById(id) {
     const data = await res.json();
     const relatedMovies = data.results;
 
-    createMovies(relatedMovies, relatedMoviesContainer, true);
+    createMovies(relatedMovies, relatedMoviesContainer, { lazyLoad: true, clean: true });
 };
+
+function getLikedMovies() {
+    const likedMovies = likedMoviesList();
+    const moviesArray = Object.values(likedMovies);
+    createMovies(moviesArray, likedMoviesLists, { lazyLoad: true, clean: true });
+}

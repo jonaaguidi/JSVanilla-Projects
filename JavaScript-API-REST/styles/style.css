@@ -92,20 +92,21 @@ button {
 
 
 /* Shared */
-.header-container, .trendingPreview-header, .categoriesPreview-container {
+.header-container, .trendingPreview-header, .categoriesPreview-container, .liked-container {
   padding: 0 24px;
 }
 
-.trendingPreview-container, .categoriesPreview-container, footer {
+.trendingPreview-container, .categoriesPreview-container, footer, .liked-container {
   margin-top: 48px;
 }
 
-.trendingPreview-header, .categoriesPreview-title {
+.trendingPreview-header, .categoriesPreview-title, .liked-header {
   margin-bottom: 24px;
 }
 
 .movie-container {
   cursor: pointer;
+  position: relative;
 }
 .movie-container--loading {
   background: var(--purple-light-2);
@@ -129,6 +130,26 @@ button {
 .movie-img {
   min-height: 180px;
   border-radius: 8px;
+}
+
+.movie-btn{
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 5px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius:30px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.movie-btn::before{
+  content:"🤍";
+}
+
+.movie-btn--liked{
+  background-color: red;
 }
 
 .categoriesPreview-list, .categories-list {
@@ -213,7 +234,9 @@ button {
 
 
 /* Trending */
-.trendingPreview-header {
+/* Trending */
+.trendingPreview-header,
+.liked-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -225,21 +248,24 @@ button {
   width: 72px;
 }
 
-.trendingPreview-movieList {
+.trendingPreview-movieList,
+.liked-movieList {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  height: 241px;
+  height: 245px;
   padding-left: 24px;
   padding-bottom: 16px;
 }
 
-.trendingPreview-movieList .movie-container {
+.trendingPreview-movieList .movie-container,
+.liked-movieList .movie-container {
   display: inline-block;
   margin-right: 8px;
 }
 
-.trendingPreview-movieList .movie-container .movie-img {
+.trendingPreview-movieList .movie-container .movie-img,
+.liked-movieList .movie-container .movie-img {
   height: 225px;
   min-height: 225px;
   max-height: 225px;
@@ -247,8 +273,6 @@ button {
   min-width: 150px;
   max-width: 150px;
 }
-
-
 /* Categories */
 .category-container {
   width: 45%;
@@ -317,10 +341,11 @@ button {
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   padding: 32px 24px;
-  margin-top: 403px;
+  margin-top: 42px;
   z-index: 1;
   position: absolute;
   background-color: var(--purple-light-1);
+  bottom: 0;
 }
 
 .movieDetail-title {
