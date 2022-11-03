@@ -1,6 +1,6 @@
 @import url(./variable.css);
 
-/*RESET*/
+/*--- GENERALS & RESET ---*/
 
 *,
 *::after,
@@ -52,7 +52,20 @@ html {
   background: var(--ultramarine-blue);
 }
 
-/*COMPONENTS*/
+.section-subtitle {
+  color: var(--ultramarine-blue);
+  font-weight: var(--fw-7);
+  text-transform: uppercase;
+}
+
+.section-text {
+  color: var(--sonic-silver);
+  font-family: "Roboto", sans-serif;
+  font-size: var(--fs-6);
+  line-height: 1.6;
+}
+
+/*--- COMPONENTS ---*/
 
 .btn {
   position: relative;
@@ -71,7 +84,8 @@ html {
   z-index: 5;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-secondary .square {
   background: var(--red-orange-wheel);
 }
 
@@ -92,11 +106,12 @@ html {
   height: 102%;
 }
 
-.btn-primary .square {
+.btn-primary .square,
+.btn-secondary {
   background: var(--oxford-blue);
 }
 
-/*MAIN*/
+/*--- NAVBAR ---*/
 
 .container {
   background: var(--white);
@@ -200,9 +215,123 @@ html {
 }
 
 .nav-toggle-btn.active .two {
-    display: none;
+  display: none;
 }
 
-.nav-toggle-btn.active .three{
-    transform: rotate(-45deg) translate(2px,-2px);
+.nav-toggle-btn.active .three {
+  transform: rotate(-45deg) translate(2px, -2px);
 }
+
+/*--- HOME ---*/
+
+.home {
+  position: relative;
+  margin-top: 70px;
+  padding: var(--py) var(--px) 0;
+  overflow: hidden;
+}
+
+.home::before {
+  content: " ";
+  position: absolute;
+  top: -200px;
+  left: -400px;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    hsla(217, 100%, 50%, 0.3),
+    transparent(70%)
+  );
+}
+
+.home::before {
+  content: "";
+  position: absolute;
+  top: 100px;
+  left: -400px;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    hsla(15, 100%, 55%, 0.3),
+    transparent(70%)
+  );
+}
+
+.home .deco-shape {
+  position: absolute;
+}
+
+.home .shape-1 {
+  top: 14%;
+  left: 8%;
+}
+
+.home .shape-2 {
+  top: 600px;
+  left: 30px;
+}
+
+.home .shape-3 {
+  top: 25%;
+  right: 0;
+}
+
+.home .shape-4 {
+  top: 570px;
+  right: 110px;
+}
+
+.home-left {
+  margin-bottom: 60px;
+}
+
+.home-left .home-right {
+  position: relative;
+  z-index: 10;
+}
+
+.home .section-subtitle {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.main-heading {
+  color: var(--oxford-blue);
+  font-size: var(--fs-1);
+  font-weight: var(--fw-9);
+  line-height: 1.2;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.underline-img {
+  display: inline-block;
+  position: relative;
+}
+
+.underline-img img {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+}
+
+.home .section-text {
+  max-width: 500px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.home-btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
