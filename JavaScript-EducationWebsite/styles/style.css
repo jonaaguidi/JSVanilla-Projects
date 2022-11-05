@@ -122,7 +122,6 @@ html {
 
 .header-container {
   background: var(--white);
-  max-width: 1440px;
   margin: auto;
   overflow: hidden;
 }
@@ -235,7 +234,6 @@ html {
   position: relative;
   margin-top: 70px;
   padding: var(--py) var(--px) 0;
-  overflow: hidden;
 }
 
 .home::before {
