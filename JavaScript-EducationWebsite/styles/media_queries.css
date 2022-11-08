@@ -104,6 +104,8 @@
 
   .event-card .event-name {
     text-align: left;
+    padding-left: 24px;
+    padding-bottom:14px;
   }
 
   /* --- CONTACT --- */
@@ -202,6 +204,7 @@
     grid-template-columns: 1fr 1fr;
     align-items: center;
     margin-top: 98px;
+    overflow: initial;
   }
 
   .home::before {
@@ -270,7 +273,7 @@
 
   .course .btn-primary {
     position: absolute;
-    top: 130px;
+    top: 200px;
     right: var(--px);
   }
 
