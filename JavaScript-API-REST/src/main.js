@@ -16,6 +16,7 @@ const lazyLoader = new IntersectionObserver((entries, observer) => {
 
 // Informacion del localstorage
 function likedMoviesList() {
+    
     const item = JSON.parse(localStorage.getItem("liked_movies"));
     let movies;
 

@@ -3,8 +3,8 @@
 //  Hash navigation: "window.onhashchange o Element.addEventListener(`hashchange`, nameFunction);" nos permite ejecutar cierto codigo cada vez que cambie nuestro "hash".
 
 // Llamamos a la funcion "navigator" cuando "load/carga" la app y cuando exite un cambio en el "hash/hashchange"
-window.addEventListener(`load`, navigator,);
-window.addEventListener(`hashchange`, navigator,);
+window.addEventListener(`load`, navigator);
+window.addEventListener(`hashchange`, navigator);
 
 // Hago que lo botones me redireccionen al hash pedido.
 trendingBtn.addEventListener("click", () => location.hash = "trends");
@@ -45,7 +45,6 @@ function navigator() {
 };
 
 function homePage() {
-
     headerSection.classList.remove("header-container--long");
     headerSection.style.background = "";
     arrowBtn.classList.add("inactive");
@@ -53,12 +52,12 @@ function homePage() {
     headerTitle.classList.remove("inactive");
     headerCategoryTitle.classList.add("inactive");
     searchForm.classList.remove("inactive");
-
     trendingPreviewSection.classList.remove("inactive");
     categoriesPreviewSection.classList.remove("inactive");
     likedMoviesSection.classList.remove("inactive");
     genericSection.classList.add("inactive");
     movieDetailSection.classList.add("inactive");
+    footer.classList.remove("inactive");
 
     getTrendingMoviesPreview();
     getCategoriesPreview();
@@ -66,7 +65,6 @@ function homePage() {
 };
 
 function categoriesPage() {
-
     headerSection.classList.remove("header-container--long");
     headerSection.style.background = "";
     arrowBtn.classList.remove("inactive");
@@ -74,7 +72,6 @@ function categoriesPage() {
     headerTitle.classList.add("inactive");
     headerCategoryTitle.classList.remove("inactive");
     searchForm.classList.add("inactive");
-
     trendingPreviewSection.classList.add("inactive");
     categoriesPreviewSection.classList.add("inactive");
     likedMoviesSection.classList.add("inactive");
@@ -91,8 +88,6 @@ function categoriesPage() {
 };
 
 function moviedetailsPage() {
-    console.log("Estas en la pagina #movie");
-
     headerSection.classList.add("header-container--long");
     headerSection.style.background = "";
     arrowBtn.classList.remove("inactive");
@@ -100,20 +95,18 @@ function moviedetailsPage() {
     headerTitle.classList.add("inactive");
     headerCategoryTitle.classList.add("inactive");
     searchForm.classList.add("inactive");
-
     trendingPreviewSection.classList.add("inactive");
     categoriesPreviewSection.classList.add("inactive");
     likedMoviesSection.classList.add("inactive");
     genericSection.classList.add("inactive");
     movieDetailSection.classList.remove("inactive");
+    footer.classList.add("inactive");
 
     const [ _ , id ] = location.hash.split("=");
     getMovieByID(id);
 };
 
 function searchPage() {
-    console.log("Estas en la pagina #search");
-
     headerSection.classList.remove("header-container--long");
     headerSection.style.background = "";
     arrowBtn.classList.remove("inactive");
@@ -121,7 +114,6 @@ function searchPage() {
     headerTitle.classList.add("inactive");
     headerCategoryTitle.classList.add("inactive");
     searchForm.classList.remove("inactive");
-
     trendingPreviewSection.classList.add("inactive");
     categoriesPreviewSection.classList.add("inactive");
     likedMoviesSection.classList.add("inactive");
@@ -130,12 +122,9 @@ function searchPage() {
 
     const [ _ , query ] = location.hash.split("=");
     getMoviesBySearch(query);
-
 };
 
 function trendsPage() {
-    console.log("Estas en la pagina #trends");
-
     headerSection.classList.remove("header-container--long");
     headerSection.style.background = "";
     arrowBtn.classList.remove("inactive");
@@ -143,7 +132,6 @@ function trendsPage() {
     headerTitle.classList.add("inactive");
     headerCategoryTitle.classList.remove("inactive");
     searchForm.classList.add("inactive");
-
     trendingPreviewSection.classList.add("inactive");
     categoriesPreviewSection.classList.add("inactive");
     likedMoviesSection.classList.add("inactive");

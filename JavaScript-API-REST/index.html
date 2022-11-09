@@ -14,91 +14,88 @@
   <link rel="stylesheet" href="./styles/style.css" />
   <link rel="shortcut icon" href="./assets/icons8-film-roll-96.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <title>TusPeliculas.app</title>
+  <title>TusPeliculas</title>
 </head>
 
 <body>
   <header id="header" class="header-container">
     <span class="header-arrow inactive">&lt;</span>
-    <h1 class="header-title animate__animated animate__fadeInDown">TusPeliculas.app💯</h1>
-    <h1 class="header-title header-title--categoryView inactive">Acción</h1>
-
+    <h1 class="header-title animate__animated animate__fadeInDown">
+      TusPeliculas.app
+      <img class="header-logo" src="./assets/icons8-film-roll-96.png">
+    </h1>
+    <h1 class="header-title header-title--categoryView inactive"></h1>
     <form id="searchForm" class="header-searchForm animate__animated animate__fadeInDown">
       <input type="text" placeholder="Busca tu pelicula favorita!" />
       <button id="searchBtn">🔍</button>
     </form>
   </header>
-
   <section id="trendingPreview" class="trendingPreview-container ">
     <div class="trendingPreview-header">
-      <h2 class="trendingPreview-title ">Tendencias</h2>
+      <h2 class="trendingPreview-title">
+        Tendencias
+        <span>&#128293;</span>
+      </h2>
       <button class="trendingPreview-btn">Ver más</button>
     </div>
-
     <article class="trendingPreview-movieList">
       <div class="movie-container movie-container--loading"></div>
       <div class="movie-container movie-container--loading"></div>
       <div class="movie-container movie-container--loading"></div>
     </article>
   </section>
-
   <section id="categoriesPreview" class="categoriesPreview-container">
-    <h2 class="categoriesPreview-title">Categorías</h2>
-
+    <h2 class="categoriesPreview-title">
+      Categorías
+      <span>&#128285;</span>
+    </h2>
     <article class="categoriesPreview-list">
       <div class="category-container category-container--loading"></div>
       <div class="category-container category-container--loading"></div>
       <div class="category-container category-container--loading"></div>
     </article>
   </section>
-
   <section id="liked" class="liked-container">
     <div class="liked-header">
-      <h2>Peliculas Favoritas</h2>
+      <h2>Peliculas Favoritas
+        <span>⭐</span>
+      </h2>
     </div>
     <article class="liked-movieList">
       <div class="movie-container">
-        <img src="./assets/false-g39fc57f72_640.png" alt="Pelicula" class="movie-img">
       </div>
       <div class="movie-container">
-        <img src="./assets/false-g39fc57f72_640.png" alt="Pelicula" class="movie-img">
       </div>
       <div class="movie-container">
-        <img src="./assets/false-g39fc57f72_640.png" alt="Pelicula" class="movie-img">
-      </div>      
+      </div>
     </article>
   </section>
-
   <section id="genericList" class="genericList-container inactive">
     <div class="movie-container movie-container--loading"></div>
     <div class="movie-container movie-container--loading"></div>
     <div class="movie-container movie-container--loading"></div>
   </section>
-
   <section id="movieDetail" class="movieDetail-container inactive">
-    <h1 class="movieDetail-title">Deadpool</h1>
-    <span class="movieDetail-score">7.6</span>
-    <p class="movieDetail-description">
-      Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to save a boy's life.
-    </p>
+    <h1 class="movieDetail-title"></h1>
+    <span class="movieDetail-score"></span>
+    <p class="movieDetail-description"></p>
 
     <article class="categories-list">
       <div class="category-container">
-        <h3 id="id28" class="category-title">Romance</h3>
+        <h3 id="" class="category-title"></h3>
       </div>
 
       <div class="category-container">
-        <h3 id="id16" class="category-title">Drama</h3>
+        <h3 id="" class="category-title"></h3>
       </div>
 
       <div class="category-container">
-        <h3 id="id14" class="category-title">Acción</h3>
+        <h3 id="" class="category-title"></h3>
       </div>
     </article>
 
     <article class="relatedMovies-container">
       <h2 class="relatedMovies-title">Películas similares</h2>
-
       <div class="relatedMovies-scrollContainer">
         <div class="movie-container movie-container--loading"></div>
         <div class="movie-container movie-container--loading"></div>
@@ -107,14 +104,12 @@
       </div>
     </article>
   </section>
-
-  <footer>
+  <footer class="footer">
     Desarrollado por
-    <a href="https://www.instagram.com/jonaaguidi/">
+    <a href="https://www.twitter.com/jonaaguidi/">
       @jonaaguidi
     </a>
   </footer>
-
   <script src="./src/nodes.js"></script>
   <script src="./src/navigation.js"></script>
   <script src="./src/main.js"></script>
