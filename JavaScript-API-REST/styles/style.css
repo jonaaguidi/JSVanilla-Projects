@@ -28,12 +28,7 @@
 }
 
 html {
-  background: rgb(34, 193, 195);
-  background: linear-gradient(
-    0deg,
-    rgba(34, 193, 195, 1) 25%,
-    rgba(92, 33, 138, 1) 70%
-  );
+  background: rgb(0, 65, 0);
 }
 
 body {
@@ -125,6 +120,11 @@ footer,
 .movie-container {
   cursor: pointer;
   position: relative;
+}
+
+.movie-container:hover{
+  transition: ease 0.4s;
+  transform: scale(0.9);
 }
 
 .movie-container--loading {
@@ -569,8 +569,8 @@ footer a {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-  .movieDetail-container{
-    height: 500px;
+  .movieDetail-container {
+    height: 550px;
   }
 }
 
